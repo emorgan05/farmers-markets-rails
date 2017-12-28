@@ -22,6 +22,15 @@ class MarketsController < ApplicationController
   end
 
   def update
+    @market = Market.find(params[:id])
+    @market.update(market_params)
+    redirect_to market_path(@market)
+  end
+
+  def destroy
+    @market = Market.find(params[:id])
+    @market.destroy
+    redirect_to root_path
   end
 
   private

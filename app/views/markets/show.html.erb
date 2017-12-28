@@ -16,3 +16,7 @@
 <% @market.vendors.each do |vendor| %>
   <p><%= link_to "#{vendor.shop_name}", vendor_path(vendor) %></p>
 <% end %>
+<br></br>
+
+<%= link_to "Edit this Market", edit_market_path(@market) %>
+<%= link_to "Delete this Market", @market, method: "delete" %>
