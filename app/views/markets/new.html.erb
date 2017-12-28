@@ -1,28 +1,3 @@
 <h1>Add a New Farmers' Market</h1>
 
-<%= form_for @market do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
-
-  <%= f.label :operating_hours %>
-  <%= f.text_field :operating_hours %><br>
-
-  <%= f.fields_for :addresses do |address| %>
-    <%= address.label :street_address_1 %>
-    <%= address.text_field :street_address_1 %><br>
-
-    <%= address.label :street_address_2 %>
-    <%= address.text_field :street_address_2 %><br>
-
-    <%= address.label :city %>
-    <%= address.text_field :city %><br>
-
-    <%= address.label :state %>
-    <%= address.text_field :state %><br>
-
-    <%= address.label :zip %>
-    <%= address.text_field :zip %><br>
-  <% end %>
-
-  <%= f.submit %>
-<% end %>
+<%= render "form" %>
