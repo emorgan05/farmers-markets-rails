@@ -1,1 +1,12 @@
 <h1><%= @market.name %></h1>
+
+<h3>Location:</h3>
+<% @market.addresses.each do |address| %>
+  <p><%= address.street_address_1 %></p>
+  <p><%= address.street_address_2 %></p>
+  <p><%= address.city %>, <%= address.state %> <%= address.zip %></p>
+<% end %>
+<br>
+
+<h3>Operating Hours:</h3>
+<%= @market.operating_hours %>
