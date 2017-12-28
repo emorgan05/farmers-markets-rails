@@ -1,13 +1,15 @@
-<ul>
-  <li><%= link_to "Home", root_path %></li>
+<nav>
+  <ul>
+    <li><%= link_to "Home", root_path %></li>
 
-  <% if current_vendor %>
-    <li><%= link_to "Add New Market", new_market_path %></li>
-    <li><%= link_to "Your Vendor Page", %></li>
-    <li><%= link_to "Log Out", destroy_vendor_session_path %></li>
-  <% else %>
-    <li><%= link_to "Log In", new_vendor_session_path %></li>
-    <li><%= link_to "Log In with Facebook", vendor_facebook_omniauth_authorize_path %></li>
-    <li><%= link_to "Sign Up", new_vendor_registration_path %></li>
-  <% end %>
-</ul>
+    <% if current_vendor %>
+      <li><%= link_to "Add New Market", new_market_path %></li>
+      <!-- <li><%#= link_to "Your Vendor Page", %></li> -->
+      <li><%= link_to "Log Out", destroy_vendor_session_path %></li>
+    <% else %>
+      <li><%= link_to "Log In", new_vendor_session_path %></li>
+      <li><%= link_to "Log In with Facebook", vendor_facebook_omniauth_authorize_path %></li>
+      <li><%= link_to "Sign Up", new_vendor_registration_path %></li>
+    <% end %>
+  </ul>
+</nav>
