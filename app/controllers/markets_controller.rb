@@ -9,6 +9,12 @@ class MarketsController < ApplicationController
   end
 
   def create
+    @market = Market.new(market_params)
+    if @market.save
+      redirect_to market_path(@market)
+    else
+      render :new
+    end
   end
 
   private
