@@ -4,9 +4,14 @@ class Vendor < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # omniauth
   devise :omniauthable, omniauth_providers: %i[facebook]
 
+  has_many :items
+  has_many :categories, through: :items
+  has_many :market_vendors
+  has_many :markets, through: :market_vendors
+
+  # omniauth methods
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |vendor|
       vendor.email = auth.info.email
@@ -26,4 +31,5 @@ class Vendor < ApplicationRecord
       end
     end
   end
+
 end
