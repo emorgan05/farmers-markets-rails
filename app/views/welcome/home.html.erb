@@ -1,0 +1,5 @@
+<h1>Farmers' Markets</h1>
+
+<%= @markets.each do |market| %>
+  <p><%= link_to "#{market.name}", market_path(market) %></p>
+<% end %>

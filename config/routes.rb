@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   # end
 
   root 'welcome#home'
+  resources :markets
 end

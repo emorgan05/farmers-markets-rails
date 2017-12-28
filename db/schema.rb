@@ -10,7 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171228152931) do
+ActiveRecord::Schema.define(version: 20171228165716) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "street_address_1"
+    t.string "street_address_2"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.integer "market_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["market_id"], name: "index_addresses_on_market_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.integer "inventory"
+    t.integer "vendor_id"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["vendor_id"], name: "index_items_on_vendor_id"
+  end
+
+  create_table "market_vendors", force: :cascade do |t|
+    t.integer "market_id"
+    t.integer "vendor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["market_id"], name: "index_market_vendors_on_market_id"
+    t.index ["vendor_id"], name: "index_market_vendors_on_vendor_id"
+  end
+
+  create_table "markets", force: :cascade do |t|
+    t.string "name"
+    t.string "operating_hours"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "vendors", force: :cascade do |t|
     t.string "email", default: "", null: false
