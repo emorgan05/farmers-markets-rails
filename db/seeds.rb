@@ -17,6 +17,10 @@ vendor_1 = Vendor.create(email: "a@email.com", password: "password", shop_name: 
 vendor_2 = Vendor.create(email: "b@email.com", password: "password", shop_name: "The King's Table", description: "We offer Fresh wild caught seafood and sustainably responsible products to serve our customers. We take care to provide our customers high quality services personalized for their unique needs.", contact: "703-409-9678")
 vendor_3 = Vendor.create(email: "c@email.com", password: "password", shop_name: "Phoenix Handcraft", description: "We are a blacksmith and mosaic artist, husband-and-wife team creating sustainable, handmade decor in metal, mosaic, & wood.", contact: "804-888-9778")
 
+market_vendor_1 = MarketVendor.create(market_id: nc_market.id, vendor_id: vendor_1.id)
+market_vendor_1 = MarketVendor.create(market_id: va_market.id, vendor_id: vendor_2.id)
+market_vendor_1 = MarketVendor.create(market_id: kc_market.id, vendor_id: vendor_3.id)
+
 category_1 = Category.create(title: "fruit")
 category_2 = Category.create(title: "vegetables")
 category_3 = Category.create(title: "dairy")

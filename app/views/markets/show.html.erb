@@ -10,4 +10,9 @@
 
 <h3>Operating Hours:</h3>
 <%= @market.operating_hours %>
-<br>
+<br></br>
+
+<h3>Vendors:</h3>
+<% @market.vendors.each do |vendor| %>
+  <p><%= link_to "#{vendor.shop_name}", vendor_path(vendor) %></p>
+<% end %>
