@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to vendor_items_path(params[:vendor_id])
+      redirect_to vendor_items_path(current_vendor.id)
     else
       render 'new'
     end
@@ -20,6 +20,6 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:items).permit(:name, :price, :inventory, :category_id, :vendor_id)
+    params.require(:item).permit(:name, :price, :inventory, :category_id, :vendor_id)
   end
 end
