@@ -1,22 +1,3 @@
 <h1>Add an Item</h1>
 
-<%= form_for @item do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <br>
-
-  <%= f.label :price %>
-  <%= f.text_field :price %>
-  <br>
-
-  <%= f.label :inventory %>
-  <%= f.text_field :inventory %>
-  <br>
-
-  <%= f.collection_select :category_id, Category.all, :id, :title %>
-  <br>
-
-  <%= f.hidden_field :vendor_id, value: "#{current_vendor.id}" %>
-
-  <%= f.submit %>
-<% end %>
+<%= render "form" %>

@@ -6,6 +6,8 @@
     <th>Category</th>
     <th>Price</th>
     <th>Inventory</th>
+    <th>Edit</th>
+    <th>Delete</th>
   </tr>
 
   <% @items.each do |item| %>
@@ -14,6 +16,8 @@
       <td><%= item.category.title %></td>
       <td><%= number_to_currency(item.price.to_f/100) %></td>
       <td><%= item.inventory %></td>
+      <td><%= link_to "Edit Item", edit_item_path(item) %></td>
+      <td><%= link_to "Delete Item", item, method: "delete" %></td>
     </tr>
   <% end %>
 </table>

@@ -9,5 +9,5 @@ Rails.application.routes.draw do
     resources :items, only: [:index]
   end
 
-  resources :items, only: [:new, :create]
+  resources :items, only: [:new, :create, :edit, :update, :destroy]
 end
