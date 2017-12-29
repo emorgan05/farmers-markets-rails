@@ -4,8 +4,12 @@ class MarketsController < ApplicationController
   end
 
   def new
-    @market = Market.new
-    @market.addresses.build
+    if current_vendor
+      @market = Market.new
+      @market.addresses.build
+    else
+      redirect_to new_vendor_session_path
+    end
   end
 
   def create
@@ -18,7 +22,11 @@ class MarketsController < ApplicationController
   end
 
   def edit
-    @market = Market.find(params[:id])
+    if current_vendor
+      @market = Market.find(params[:id])
+    else
+      redirect_to new_vendor_session_path
+    end
   end
 
   def update
