@@ -5,4 +5,16 @@ class ItemsController < ApplicationController
     end
   end
 
+  def new
+    @item = Item.new
+  end
+
+  def create
+    raise params.inspect
+  end
+
+  private
+  def item_params
+    params.require(:items).permit(:name, :price, :inventory, :category_id, :vendor_id)
+  end
 end
