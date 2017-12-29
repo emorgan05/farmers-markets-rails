@@ -4,7 +4,7 @@
 
     <% if current_vendor %>
       <li><%= link_to "Add New Market", new_market_path %></li>
-      <!-- <li><%#= link_to "Your Vendor Page", %></li> -->
+      <li><%= link_to "Your Vendor Page", vendor_path(current_vendor) %></li>
       <li><%= link_to "Log Out", destroy_vendor_session_path, method: "delete" %></li>
     <% else %>
       <li><%= link_to "Log In", new_vendor_session_path %></li>
