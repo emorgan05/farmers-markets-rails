@@ -18,5 +18,7 @@
 <% end %>
 <br></br>
 
-<%= link_to "Edit this Market", edit_market_path(@market) %>
-<%= link_to "Delete this Market", @market, method: "delete" %>
+<% if current_vendor %>
+  <%= link_to "Edit this Market", edit_market_path(@market) %>
+  <%= link_to "Delete this Market", @market, method: "delete" %>
+<% end %>

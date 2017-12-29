@@ -28,6 +28,12 @@ class ItemsController < ApplicationController
     redirect_to vendor_items_path(current_vendor.id)
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to vendor_items_path(current_vendor.id)
+  end
+
   private
   def item_params
     params.require(:item).permit(:name, :price, :inventory, :category_id, :vendor_id)
