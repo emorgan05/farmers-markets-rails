@@ -1,0 +1,14 @@
+<h1><%= @vendor.shop_name %></h1>
+
+<h3>Description:</h3>
+<p><%= @vendor.description %></p>
+<br>
+
+<h3>Contact:</h3>
+<p><%= @vendor.contact %></p>
+<br>
+
+<h3>All Markets</h3>
+<% @vendor.markets.each do |market| %>
+  <p><%= link_to market.name, market_path(market) %>
+<% end %>

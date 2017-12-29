@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   resources :markets, only: [:show, :new, :create, :edit, :update, :destroy] do
-    resources :vendors, only: [:show]
+    resources :vendors, only: [:show], as: 'vendor_details'
   end
 
   resources :vendors do
