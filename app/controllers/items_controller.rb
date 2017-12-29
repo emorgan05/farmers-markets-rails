@@ -1,13 +1,19 @@
 class ItemsController < ApplicationController
   def index
-    if params[:vendor_id]
+    if params[:vendor_id] && current_vendor && current_vendor.id.to_s == params[:vendor_id]
       @items = Vendor.find(params[:vendor_id]).items
+    else
+      redirect_to new_vendor_session_path
     end
   end
 
   def new
-    @item = Item.new
-    @vendor = current_vendor
+    if params[:vendor_id] && current_vendor && current_vendor.id.to_s == params[:vendor_id]
+      @item = Item.new
+      @vendor = current_vendor
+    else
+      redirect_to new_vendor_session_path
+    end
   end
 
   def create
@@ -20,8 +26,12 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
-    @vendor = current_vendor
+    if params[:vendor_id] && current_vendor && current_vendor.id.to_s == params[:vendor_id]
+      @item = Item.find(params[:id])
+      @vendor = current_vendor
+    else
+      redirect_to new_vendor_session_path
+    end
   end
 
   def update
