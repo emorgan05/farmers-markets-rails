@@ -13,8 +13,10 @@
   <%= f.text_field :inventory %>
   <br>
 
-  <%= f.collection_select :category, Category.all, :id, :title %>
+  <%= f.collection_select :category_id, Category.all, :id, :title %>
   <br>
+
+  <%= f.hidden_field :vendor_id, value: "#{current_vendor.id}" %>
 
   <%= f.submit %>
 <% end %>
