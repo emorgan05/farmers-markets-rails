@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @vendor = current_vendor
   end
 
   def create
@@ -20,6 +21,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @vendor = current_vendor
   end
 
   def update

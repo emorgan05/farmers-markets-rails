@@ -1,4 +1,4 @@
-<%= form_for @item do |f| %>
+<%= form_for [@vendor, @item] do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <br>
@@ -14,7 +14,7 @@
   <%= f.collection_select :category_id, Category.all, :id, :title %>
   <br>
 
-  <%= f.hidden_field :vendor_id, value: "#{current_vendor.id}" %>
+  <%= f.hidden_field :vendor_id, value: @vendor.id %>
 
   <%= f.submit %>
 <% end %>
