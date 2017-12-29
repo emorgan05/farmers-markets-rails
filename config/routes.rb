@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   resources :markets
-  resources :vendors
-  resources :items
+  resources :vendors do
+    resources :items
+  end
 end
