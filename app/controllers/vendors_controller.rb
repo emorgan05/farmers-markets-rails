@@ -3,6 +3,7 @@ class VendorsController < ApplicationController
     if current_vendor && current_vendor.id.to_s == params[:id]
       @vendor = Vendor.find(params[:id])
     elsif params[:market_id]
+      @vendor = Vendor.find(params[:id])
       render 'details'
     else
       flash[:notice] = "Please login to access your Vendor page"

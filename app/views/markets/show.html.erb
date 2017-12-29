@@ -15,7 +15,7 @@
 <% if current_vendor %>
   <h3>Vendors:</h3>
   <% @market.vendors.each do |vendor| %>
-    <p><%= link_to "#{vendor.shop_name}", vendor_path(vendor) %></p>
+    <p><%= link_to "#{vendor.shop_name}", market_vendor_detail_path(@market, vendor) %></p>
   <% end %>
   <br></br>
 
