@@ -8,12 +8,12 @@
     <th>Inventory</th>
   </tr>
 
-  <tr>
-    <% @items.each do |item| %>
+  <% @items.each do |item| %>
+    <tr>
       <td><%= item.name %></td>
-      <td><%= item.category %></td>
-      <td><%= item.price %></td>
+      <td><%= item.category.title %></td>
+      <td><%= number_to_currency(item.price.to_f/100) %></td>
       <td><%= item.inventory %></td>
-    <% end %>
-  </tr>
+    </tr>
+  <% end %>
 </table>
