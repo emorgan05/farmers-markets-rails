@@ -43,7 +43,10 @@ Includes third party signup/login with Devise and Omniauth using Facebook as the
 - [X] Include nested resource show or index (URL e.g. users/2/recipes)
 Includes items as a nested resource, so the url is vendors/1/items
 
-- [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
+- [X] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
+items are nested under vendors
+all item paths are nested under vendors, including new, edit, and delete
+
 - [ ] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
