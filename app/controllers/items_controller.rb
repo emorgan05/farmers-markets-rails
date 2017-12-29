@@ -4,4 +4,5 @@ class ItemsController < ApplicationController
       @items = Vendor.find(params[:vendor_id]).items
     end
   end
+
 end
