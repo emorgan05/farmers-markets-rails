@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   root 'welcome#home'
 
-  resources :markets, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :markets, only: [:show, :new, :create, :edit, :update, :destroy] do
+    resources :vendors, only: [:show]
+  end
 
   resources :vendors do
     resources :items, only: [:index, :new, :create, :edit, :update, :destroy]
