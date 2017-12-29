@@ -10,7 +10,12 @@ class ItemsController < ApplicationController
   end
 
   def create
-    raise params.inspect
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to vendor_items_path(params[:vendor_id])
+    else
+      render 'new'
+    end
   end
 
   private
