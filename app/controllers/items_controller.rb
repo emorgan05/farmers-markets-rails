@@ -23,7 +23,9 @@ class ItemsController < ApplicationController
   end
 
   def update
-
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+    redirect_to vendor_items_path(current_vendor.id)
   end
 
   private
