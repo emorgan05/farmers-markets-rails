@@ -16,8 +16,8 @@
       <td><%= item.category.title %></td>
       <td><%= number_to_currency(item.price.to_f/100) %></td>
       <td><%= item.inventory %></td>
-      <td><%= link_to "Edit Item", edit_item_path(item) %></td>
-      <td><%= link_to "Delete Item", item, method: "delete" %></td>
+      <td><%= link_to "Edit Item", edit_vendor_item_path(current_vendor.id, item) %></td>
+      <td><%= link_to "Delete Item", vendor_item_path(current_vendor.id, item), method: "delete" %></td>
     </tr>
   <% end %>
 </table>
