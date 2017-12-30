@@ -2,14 +2,18 @@
   <%= f.label :shop_name %>
   <%= f.text_field :shop_name %>
   <br>
+
   <%= f.label :description %>
   <%= f.text_area :description %>
   <br>
+
   <%= f.label "Phone Number" %>
   <%= f.text_field :contact %>
   <br>
+
   <%= f.label "Markets Where You Sell" %>
   <%= f.collection_select :market_ids, Market.all, :id, :name %>
   <br>
+  
   <%= f.submit %>
 <% end %>
