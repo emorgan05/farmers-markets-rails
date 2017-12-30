@@ -26,7 +26,8 @@ Item validates that price and inventory are integers
 Vendor validates that the length of the description does not exceed 255 characters
 Vendor also validates that the contact number is a number and the appropriate length
 
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+- [X] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+Vendors can filter their items based on category. The scope method is in the Items class and is called #by_category
 
 - [X] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /recipe/new, Item)
 markets has_many :addresses
