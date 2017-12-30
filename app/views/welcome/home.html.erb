@@ -3,3 +3,11 @@
 <% @markets.each do |market| %>
   <p><%= link_to "#{market.name}", market_path(market) %></p>
 <% end %>
+
+<div>
+  <h3>Filter by location:</h3>
+  <%= form_tag("/", method: "get") do %>
+    <%= select_tag "address", options_from_collection_for_select(@addresses, "id", "state"), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>
