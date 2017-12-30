@@ -20,8 +20,12 @@ class VendorsController < ApplicationController
 
   def update
     @vendor = Vendor.find(params[:id])
-    @vendor.update(vendor_params)
-    redirect_to vendor_path(@vendor)
+    if @vendor.update(vendor_params)
+      redirect_to vendor_path(@vendor)
+    else
+      flash[:errors] = @vendor.errors.full_messages
+      redirect_to edit_vendor_path(@vendor)
+    end
   end
 
   private

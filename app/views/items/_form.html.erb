@@ -1,17 +1,4 @@
-<% if flash[:errors] %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(flash[:errors].count, "error") %>
-      prohibited this article from being saved:
-    </h2>
-
-    <ul>
-      <% flash[:errors].each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render 'layouts/errors' %>
 
 <%= form_for [@vendor, @item] do |f| %>
 

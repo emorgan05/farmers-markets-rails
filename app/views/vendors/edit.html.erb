@@ -1,3 +1,5 @@
+<%= render 'layouts/errors' %>
+
 <%= form_for @vendor do |f| %>
   <%= f.label :shop_name %>
   <%= f.text_field :shop_name %>
@@ -14,6 +16,6 @@
   <%= f.label "Markets Where You Sell" %>
   <%= f.collection_select :market_ids, Market.all, :id, :name %>
   <br>
-  
+
   <%= f.submit %>
 <% end %>
