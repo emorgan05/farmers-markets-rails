@@ -1,7 +1,14 @@
 class ItemsController < ApplicationController
   def index
+    @categories = Category.all
+    @vendor = Vendor.find(params[:vendor_id])
+
     if params[:vendor_id] && current_vendor && current_vendor.id.to_s == params[:vendor_id]
-      @items = Vendor.find(params[:vendor_id]).items
+      if !params[:category].blank?
+        @items = current_vendor.items.where(category: params[:category])
+      else
+        @items = current_vendor.items
+      end
     else
       redirect_to new_vendor_session_path
     end

@@ -24,3 +24,12 @@
 <br>
 
 <%= link_to "Add inventory", new_vendor_item_path(current_vendor.id) %>
+<br>
+
+<div>
+  <h3>Filter items:</h3>
+  <%= form_tag("/vendors/#{@vendor.id}/items", method: "get") do %>
+    <%= select_tag "category", options_from_collection_for_select(@categories, "id", "title"), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>
