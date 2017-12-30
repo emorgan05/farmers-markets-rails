@@ -11,5 +11,4 @@ Rails.application.routes.draw do
   resources :vendors do
     resources :items, only: [:index, :new, :create, :edit, :update, :destroy]
   end
-
 end
