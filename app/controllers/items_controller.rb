@@ -36,11 +36,11 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
-    if @item.errors
-      redirect_to edit_vendor_item_path(current_vendor.id, @item)
-    else
+    if @item.update(item_params)
       redirect_to vendor_items_path(current_vendor.id)
+    else
+      flash[:errors] = @item.errors.full_messages
+      redirect_to edit_vendor_item_path(current_vendor.id, @item)
     end
   end
 
