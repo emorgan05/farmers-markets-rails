@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
 
     if params[:vendor_id] && current_vendor && current_vendor.id.to_s == params[:vendor_id]
       if !params[:category].blank?
-        @items = current_vendor.items.where(category: params[:category])
+        @items = current_vendor.items.by_category(params[:category])
       else
         @items = current_vendor.items
       end
