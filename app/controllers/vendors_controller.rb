@@ -26,6 +26,6 @@ class VendorsController < ApplicationController
 
   private
   def vendor_params
-    params.require(:vendor).permit(:shop_name, :description, :contact)
+    params.require(:vendor).permit(:shop_name, :description, :contact, :market_ids)
   end
 end
