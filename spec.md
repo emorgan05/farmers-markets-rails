@@ -51,7 +51,8 @@ Includes items as a nested resource, so the url is vendors/1/items
 items are nested under vendors
 all item paths are nested under vendors, including new, edit, and delete
 
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+- [X] Include form display of validation errors (form URL e.g. /recipes/new)
+Item and Vendor forms display validation errors
 
 Confirm:
 - [ ] The application is pretty DRY
