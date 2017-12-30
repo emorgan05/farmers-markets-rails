@@ -21,7 +21,10 @@ categories has_many :vendors, through: :items
 - [X] The "through" part of the has_many through includes at least one user submittable attribute (attribute_name e.g. ingredients.quantity)
 in items, when a vendor add or edits a new item, they submit the name, price, inventory, and choose a category from a drop-down menu
 
-- [ ] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
+- [X] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
+Item validates that price and inventory are integers
+Vendor validates that the length of the description does not exceed 255 characters
+Vendor also validates that the contact number is a number and the appropriate length
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
 
 - [X] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /recipe/new, Item)

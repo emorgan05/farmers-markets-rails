@@ -14,7 +14,9 @@ class Vendor < ApplicationRecord
 
   # validations
   validates :description, length: { maximum: 255 }
-  
+  validates :contact, :numericality => true,
+                      :length => { :minimum => 10, :maximum => 15 }
+
   # omniauth methods
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |vendor|
