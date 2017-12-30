@@ -6,11 +6,15 @@ class Vendor < ApplicationRecord
 
   devise :omniauthable, omniauth_providers: %i[facebook]
 
+  # associations
   has_many :items
   has_many :categories, through: :items
   has_many :market_vendors
   has_many :markets, through: :market_vendors
 
+  # validations
+  validates :description, length: { maximum: 255 }
+  
   # omniauth methods
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |vendor|
