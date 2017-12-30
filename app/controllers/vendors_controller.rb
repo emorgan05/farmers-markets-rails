@@ -13,4 +13,19 @@ class VendorsController < ApplicationController
       redirect_to new_vendor_session_path
     end
   end
+
+  def edit
+    @vendor = Vendor.find(params[:id])
+  end
+
+  def update
+    @vendor = Vendor.find(params[:id])
+    @vendor.update(vendor_params)
+    redirect_to vendor_path(@vendor)
+  end
+
+  private
+  def vendor_params
+    params.require(:vendor).permit(:shop_name, :description, :contact)
+  end
 end
