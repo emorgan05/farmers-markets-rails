@@ -37,7 +37,11 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
-    redirect_to vendor_items_path(current_vendor.id)
+    if @item.errors
+      redirect_to edit_vendor_item_path(current_vendor.id, @item)
+    else
+      redirect_to vendor_items_path(current_vendor.id)
+    end
   end
 
   def destroy
