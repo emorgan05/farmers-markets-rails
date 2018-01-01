@@ -10,5 +10,4 @@ class Market < ApplicationRecord
       end
     end
   end
-
 end
