@@ -24,7 +24,7 @@ in items, when a vendor add or edits a new item, they submit the name, price, in
 - [X] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
 Item validates that price and inventory are integers
 Vendor validates that the length of the description does not exceed 255 characters
-Vendor also validates that the contact number is a number and the appropriate length
+Vendor also validates that the contact number is the appropriate length
 
 - [X] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
 Vendors can filter their items based on category. The scope method is in the Items class and is called #by_category

@@ -8,7 +8,7 @@ class Vendor < ApplicationRecord
 
   # roles
   enum role: [:normal, :admin]
-  
+
   # associations
   has_many :items
   has_many :categories, through: :items
@@ -17,8 +17,7 @@ class Vendor < ApplicationRecord
 
   # validations
   validates :description, length: { maximum: 255 }
-  validates :contact, :numericality => true,
-                      :length => { :minimum => 10, :maximum => 15 }
+  validates :contact, length: { maximum: 15 }
 
   # scope
   def self.by_category(category_id)
