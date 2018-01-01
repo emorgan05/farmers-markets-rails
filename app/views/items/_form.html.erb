@@ -1,6 +1,6 @@
 <%= render 'layouts/errors' %>
 
-<%= form_for [@vendor, @item] do |f| %>
+<%= form_for [@vendor, @item], :html => { :class => "form" } do |f| %>
 
   <%= f.label :name %>
   <%= f.text_field :name %>
