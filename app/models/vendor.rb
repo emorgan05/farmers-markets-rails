@@ -17,6 +17,11 @@ class Vendor < ApplicationRecord
   validates :contact, :numericality => true,
                       :length => { :minimum => 10, :maximum => 15 }
 
+  # scope
+  def self.by_category(category_id)
+    self.joins(:categories).where("categories.id =?", category_id).uniq
+  end
+
   # omniauth methods
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |vendor|
