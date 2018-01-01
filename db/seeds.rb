@@ -36,3 +36,5 @@ item_2 = Item.create(name: "peaches", price: "200", inventory: "250", vendor_id:
 item_3 = Item.create(name: "salmon", price: "1000", inventory: "10", vendor_id: vendor_2.id, category_id: category_5.id)
 item_4 = Item.create(name: "cinnamon raisin muffins", price: "400", inventory: "25", vendor_id: vendor_3.id, category_id: category_6.id)
 item_5 = Item.create(name: "salsa", price: "600", inventory: "50", vendor_id: vendor_3.id, category_id: category_8.id)
+
+admin = Vendor.create(email: "z@email.com", password: "password", role: 1)

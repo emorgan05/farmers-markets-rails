@@ -43,9 +43,13 @@ class MarketsController < ApplicationController
   end
 
   def destroy
-    @market = Market.find(params[:id])
-    @market.destroy
-    redirect_to root_path
+    if current_vendor.admin?
+      @market = Market.find(params[:id])
+      @market.destroy
+      redirect_to root_path
+    else
+      flash[:notice] = "You do not have permission to delete a market"
+    end
   end
 
   private

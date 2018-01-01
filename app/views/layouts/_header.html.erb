@@ -2,8 +2,11 @@
   <ul>
     <li><%= link_to "Home", root_path %></li>
 
-    <% if current_vendor %>
+    <% if current_vendor && current_vendor.admin? %>
       <li><%= link_to "Add New Market", new_market_path %></li>
+      <li><%= link_to "Your Vendor Page", vendor_path(current_vendor) %></li>
+      <li><%= link_to "Log Out", destroy_vendor_session_path, method: "delete" %></li>
+    <% elsif current_vendor %>
       <li><%= link_to "Your Vendor Page", vendor_path(current_vendor) %></li>
       <li><%= link_to "Log Out", destroy_vendor_session_path, method: "delete" %></li>
     <% else %>

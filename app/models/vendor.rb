@@ -6,6 +6,9 @@ class Vendor < ApplicationRecord
 
   devise :omniauthable, omniauth_providers: %i[facebook]
 
+  # roles
+  enum role: [:normal, :admin]
+  
   # associations
   has_many :items
   has_many :categories, through: :items
