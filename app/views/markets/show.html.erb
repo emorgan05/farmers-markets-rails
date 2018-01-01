@@ -14,13 +14,21 @@
 
 <% if current_vendor %>
   <h3>Vendors:</h3>
-  <% @market.vendors.each do |vendor| %>
+  <% @vendors.each do |vendor| %>
     <p><%= link_to "#{vendor.shop_name}", market_vendor_detail_path(@market, vendor) %></p>
   <% end %>
-  <br></br>
 
+  <div>
+    <h3>Filter items:</h3>
+    <%= form_tag("/markets/#{@market.id}", method: "get") do %>
+      <%= select_tag "category", options_from_collection_for_select(@categories, "id", "title"), include_blank: true %>
+      <%= submit_tag "Filter" %>
+    <% end %>
+  </div>
+  <br></br>
   <%= link_to "Edit this Market", edit_market_path(@market) %>
   <%= link_to "Delete this Market", @market, method: "delete" %>
+
 <% else %>
   <p><%= link_to "Sign Up", new_vendor_registration_path %> or <%= link_to "Log In", new_vendor_session_path %> to see the Vendors at this market</p>
 <% end %>
