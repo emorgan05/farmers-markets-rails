@@ -76,6 +76,14 @@ textarea {
 }
 
 /* Links */
+.devise_links {
+  text-decoration: none;
+  color: blue;
+  font-weight: bold;
+  padding: 5px;
+  border: none;
+}
+
 a {
   text-decoration: none;
   color: #A2CC5D;
