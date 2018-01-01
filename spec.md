@@ -28,6 +28,7 @@ Vendor also validates that the contact number is a number and the appropriate le
 
 - [X] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
 Vendors can filter their items based on category. The scope method is in the Items class and is called #by_category
+When looking at a market, you can filter the list of vendors by category, I've set it up to only show unique instances of the vendor. So filtering by the category "fruit" will not give you 3 listings for Vendor 1. 
 
 - [X] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /recipe/new, Item)
 markets has_many :addresses
