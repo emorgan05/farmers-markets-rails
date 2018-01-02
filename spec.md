@@ -63,7 +63,7 @@ If I repeated something, I tried to move it to a partial
 - [X] Limited logic in controllers
 Included class methods to limit logic in the controllers
 
-- [ ] Views use helper methods if appropriate
+- [X] Views use helper methods if appropriate
 No helper methods used. They didn't seem to fit my project.
 
 - [X] Views use partials if appropriate
