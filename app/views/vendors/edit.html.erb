@@ -17,5 +17,9 @@
   <%= f.collection_select :market_ids, Market.all, :id, :name %>
   <br>
 
+  <%= f.label "Are you an administrator?" %>
+  <%= f.check_box :role %>
+  <br>
+
   <%= f.submit %>
 <% end %>
