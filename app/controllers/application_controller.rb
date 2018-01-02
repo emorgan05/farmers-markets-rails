@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     stored_location_for(resource) ||
     if resource.is_a?(Vendor)
-      @vendor = Vendor.find_by(email: params[:vendor][:email])
+      @vendor = Vendor.find_by(email: resource.email)
       vendor_path(@vendor)
     else
       super
