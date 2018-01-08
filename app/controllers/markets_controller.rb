@@ -2,6 +2,7 @@ class MarketsController < ApplicationController
   def show
     @market = Market.find(params[:id])
     @categories = Category.all
+    @reviews = @market.reviews
 
     if !params[:category].blank?
       @vendors = @market.vendors.by_category(params[:category])

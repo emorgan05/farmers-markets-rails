@@ -14,6 +14,7 @@ class Vendor < ApplicationRecord
   has_many :categories, through: :items
   has_many :market_vendors
   has_many :markets, through: :market_vendors
+  has_many :reviews
 
   # validations
   validates :description, length: { maximum: 255 }
