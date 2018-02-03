@@ -34,6 +34,10 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
+# use Active Model Serializers
+gem 'active_model_serializers', '0.10.6'
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

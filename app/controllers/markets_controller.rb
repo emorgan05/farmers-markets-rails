@@ -1,6 +1,8 @@
 class MarketsController < ApplicationController
   def show
     @market = Market.find(params[:id])
+    render json: @market
+
     @categories = Category.all
 
     if !params[:category].blank?
