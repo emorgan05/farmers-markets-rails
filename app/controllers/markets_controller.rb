@@ -3,13 +3,15 @@ class MarketsController < ApplicationController
     @market = Market.find(params[:id])
     render json: @market
 
-    @categories = Category.all
-
-    if !params[:category].blank?
-      @vendors = @market.vendors.by_category(params[:category])
-    else
-      @vendors = @market.vendors
-    end
+    @vendors = @market.vendors
+    render json: @vendors
+    # @categories = Category.all
+    #
+    # if !params[:category].blank?
+    #   @vendors = @market.vendors.by_category(params[:category])
+    # else
+    #   @vendors = @market.vendors
+    # end
   end
 
   def new
