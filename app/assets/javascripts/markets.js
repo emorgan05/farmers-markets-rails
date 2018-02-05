@@ -3,8 +3,7 @@ $(function() {
   $(".js-marketShow").on("click", function(event) {
     event.preventDefault();
     var id = $(this).data("id");
-    $.get("/markets/" + id + ".json", function(data) {
-      console.log(data);
+    $.get("/markets/" + id, function(data) {
       $("#market_name_" + id).text(data["name"]);
       $("#street_address_1_" + id).text(data["addresses"][0]["street_address_1"]);
       $("#street_address_2_" + id).text(data["addresses"][0]["street_address_2"]);
@@ -13,13 +12,13 @@ $(function() {
       $("#market_hours_" + id).text(data["operating_hours"]);
 
       // vendors
-      var vendorText = "<ul>";
+      var vendorText = "<h3>Vendors</h3><ul>";
       for(var vendor of data["vendors"]) {
         var name = vendor["shop_name"];
-        vendorText += "<li>" + name + "</li>";
+        vendorText += `<li><button class='js-vendorDetails' data-id='${vendor["id"]}'>${name}</button></li>`;
       }
       vendorText += "</ul>"
-      $("#market_vendors").html(vendorText);
+      $("#market_vendors_" + id).html(vendorText);
     });
   });
 });
