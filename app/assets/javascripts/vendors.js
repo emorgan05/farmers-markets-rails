@@ -11,12 +11,12 @@ $(document).on("click", ".js-vendorDetails", function(event) {
 
 // current vendor profile page
 $(document).ready(function() {
-  $("#js-vendorEdit").on("click", function(event) {
-    alert("This click works");
+  $(".js-vendorEdit").on("click", function(event) {
     event.preventDefault();
     var id = $(this).data("id");
+    console.log($(".js-vendorEdit").html)
     $.get("/vendors/" + id + "/edit", function(data) {
-      console.log(data);
+      $("#editVendor").html("render partial: 'vendors/edit'");
     });
   });
 });
