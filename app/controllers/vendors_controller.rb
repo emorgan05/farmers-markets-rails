@@ -1,17 +1,23 @@
 class VendorsController < ApplicationController
   def show
+    @vendor = Vendor.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @vendor }
+    end
+
     # if current_vendor && current_vendor.id.to_s == params[:id]
     #   @vendor = Vendor.find(params[:id])
-    if params[:market_id]
-      @vendor = Vendor.find(params[:id])
-      render json: @vendor
-    elsif current_vendor && current_vendor.id.to_s != params[:id]
-      flash[:notice] = "Please access your profile through the link above"
-      redirect_to root_path
-    else
-      flash[:notice] = "Please login to access your Vendor page"
-      redirect_to new_vendor_session_path
-    end
+    # if params[:market_id]
+    #   @vendor = Vendor.find(params[:id])
+    #   render 'details'
+    # elsif current_vendor && current_vendor.id.to_s != params[:id]
+    #   flash[:notice] = "Please access your profile through the link above"
+    #   redirect_to root_path
+    # else
+    #   flash[:notice] = "Please login to access your Vendor page"
+    #   redirect_to new_vendor_session_path
+    # end
   end
 
   def edit

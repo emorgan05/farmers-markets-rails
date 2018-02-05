@@ -27,7 +27,7 @@ $(document).ready(function() {
     event.preventDefault();
     var id = $(this).data("id");
     var market_id = $(this).data("market");
-    $.get("/markets/" + market_id + "/vendors/" + id, function(data) {
+    $.get("/markets/" + market_id + "/vendors/" + id + ".json", function(data) {
       console.log(data);
       var vendorDetails = `<p>${data["shop_name"]}</p><p>${data["description"]}</p><p>${data["contact"]}</p>`;
       $("#vendor_details_" + id).html(vendorDetails);
