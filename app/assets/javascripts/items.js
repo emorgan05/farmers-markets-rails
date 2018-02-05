@@ -10,7 +10,8 @@ $(document).ready(function() {
         var category = item["category"]["title"];
         var price = parseInt(item["price"])/100;
         var inventory = item["inventory"];
-        inventoryTable += `<tr><td>${name}</td><td>${category}</td><td>${price}</td><td>${inventory}</td></tr>`
+        
+        inventoryTable += `<tr><td>${name}</td><td>${category}</td><td>${price}</td><td>${inventory}</td><td><%=j(link_to "Edit Item", edit_vendor_item_path(current_vendor.id, item)) %></td><td><%=j(link_to "Delete Item", vendor_item_path(current_vendor.id, item), method: "delete") %></td></tr>`
       }
       inventoryTable += "</table>"
       $("#js-inventoryTable").html(inventoryTable);
