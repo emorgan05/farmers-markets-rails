@@ -13,6 +13,34 @@
 
 <p><%= link_to "Inventory", vendor_items_path(@vendor) %></p>
 <br>
-<button class="js-vendorEdit" data-id="<%= @vendor.id %>">Update Your Information (so others can find you)</button>
-<div id="editVendor"></div>
+<p>------------------------</p>
+<h3>Vendor Information</h3>
+<!-- <button class="js-vendorEdit" data-id="<%#= @vendor.id %>">Update Your Information (so others can find you)</button> -->
+<div id="editVendor">
+  <%= render 'layouts/errors' %>
+
+  <%= form_for @vendor do |f| %>
+    <%= f.label :shop_name %>
+    <%= f.text_field :shop_name %>
+    <br>
+
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+    <br>
+
+    <%= f.label "Phone Number" %>
+    <%= f.text_field :contact %>
+    <br>
+
+    <%= f.label "Markets Where You Sell" %>
+    <%= f.collection_select :market_ids, Market.all, :id, :name %>
+    <br>
+
+    <%= f.label "Are you an administrator?" %>
+    <%= f.check_box :role %>
+    <br>
+
+    <%= f.submit %>
+  <% end %>
+</div>
 <!-- <p><%#= link_to "Update Your Information (so others can find you)", edit_vendor_path(@vendor) %></p> -->
