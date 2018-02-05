@@ -22,6 +22,7 @@ class VendorsController < ApplicationController
 
   def edit
     @vendor = Vendor.find(params[:id])
+    render json: @vendor
   end
 
   def update

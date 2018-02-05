@@ -13,4 +13,6 @@
 
 <p><%= link_to "Inventory", vendor_items_path(@vendor) %></p>
 <br>
-<p><%= link_to "Update Your Information (so others can find you)", edit_vendor_path(@vendor) %></p>
+<button class="js-vendorEdit" data-id="<%= @vendor.id %>">Update Your Information (so others can find you)</button>
+
+<!-- <p><%#= link_to "Update Your Information (so others can find you)", edit_vendor_path(@vendor) %></p> -->
