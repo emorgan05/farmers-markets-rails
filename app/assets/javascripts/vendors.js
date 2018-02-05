@@ -12,27 +12,22 @@ $(document).on("click", ".js-vendorDetails", function(event) {
 // current vendor profile page
 // attempt to add edit form dynamically to the page -- currently not functioning
 $(document).ready(function() {
-  $(".js-vendorEdit").on("click", function(event) {
-    event.preventDefault();
-    var id = $(this).data("id");
-    console.log($(".js-vendorEdit").html)
-    $.get("/vendors/" + id + "/edit", function(data) {
-      $("#editVendor").html("render partial: 'vendors/edit'");
-    });
-  });
+  // $(".js-vendorEdit").on("click", function(event) {
+  //   event.preventDefault();
+  //   var id = $(this).data("id");
+  //   console.log($(".js-vendorEdit").html)
+  //   $.get("/vendors/" + id + "/edit", function(data) {
+  //     $("#editVendor").html("render partial: 'vendors/edit'");
+  //   });
+  // });
 
-  // submitting vendor form with ajax
+  // submitting vendor edit form with ajax
   $("form").submit(function(event) {
     event.preventDefault();
-    
-    var values = $(this).serialize();
     $.ajax({
       method: "PATCH",
-      url: "/vendors/" + id,
-      data: { values },
-    })
-    .done(function(msg) {
-      alert("Data saved");
+      url: this.action,
+      data: $(this).serialize(),
     });
   });
 });
