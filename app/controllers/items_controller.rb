@@ -1,17 +1,20 @@
 class ItemsController < ApplicationController
   def index
-    @categories = Category.all
-    @vendor = Vendor.find(params[:vendor_id])
+    @items = current_vendor.items
+    render json: @items
 
-    if params[:vendor_id] && current_vendor && current_vendor.id.to_s == params[:vendor_id]
-      if !params[:category].blank?
-        @items = current_vendor.items.by_category(params[:category])
-      else
-        @items = current_vendor.items
-      end
-    else
-      redirect_to new_vendor_session_path
-    end
+    # @categories = Category.all
+    # @vendor = Vendor.find(params[:vendor_id])
+    #
+    # if params[:vendor_id] && current_vendor && current_vendor.id.to_s == params[:vendor_id]
+    #   if !params[:category].blank?
+    #     @items = current_vendor.items.by_category(params[:category])
+    #   else
+    #     @items = current_vendor.items
+    #   end
+    # else
+    #   redirect_to new_vendor_session_path
+    # end
   end
 
   def new
