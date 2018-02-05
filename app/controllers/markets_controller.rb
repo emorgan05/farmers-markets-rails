@@ -3,8 +3,6 @@ class MarketsController < ApplicationController
     @market = Market.find(params[:id])
     render json: @market
 
-    @vendors = @market.vendors
-    render json: @vendors
     # @categories = Category.all
     #
     # if !params[:category].blank?

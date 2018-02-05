@@ -11,6 +11,15 @@ $(function() {
       var cityStateZip = data["addresses"][0]["city"] + ", " + data["addresses"][0]["state"] + " " + data["addresses"][0]["zip"]
       $("#city_state_zip_" + id).text(cityStateZip);
       $("#market_hours_" + id).text(data["operating_hours"]);
+
+      // vendors
+      var vendorText = "<ul>";
+      for(var vendor of data["vendors"]) {
+        var name = vendor["shop_name"];
+        vendorText += "<li>" + name + "</li>";
+      }
+      vendorText += "</ul>"
+      $("#market_vendors").html(vendorText);
     });
   });
 });
