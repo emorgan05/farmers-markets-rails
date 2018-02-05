@@ -12,6 +12,7 @@ $(document).on("click", ".js-vendorDetails", function(event) {
 // current vendor profile page
 $(document).ready(function() {
   $("#js-vendorEdit").on("click", function(event) {
+    alert("This click works");
     event.preventDefault();
     var id = $(this).data("id");
     $.get("/vendors/" + id + "/edit", function(data) {
