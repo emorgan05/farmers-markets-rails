@@ -1,15 +1,15 @@
 <h1>Farmers' Markets</h1>
 
 <% @markets.each do |market| %>
-  <p><%= link_to "#{market.name}", market_path(market), id: "js-marketShow", data: { id: "#{market.id}" } %></p>
-  <div id="market_info">
-    <h1 id="market_name"></h1>
+  <button class="js-marketShow" data-id="<%= market.id %>"><%= market.name %></button>
+
+  <div id="market-<%= market.id %>">
+    <h1 id="market_name_<%= market.id %>"></h1>
 
     <h3 id="market_location"></h3>
-      <p id="street_address_1"></p>
-      <p id="street_address_2"></p>
-      <p id="city_state_zip"></p>
-
-    <h3 id="market_hours"></h3>
+      <p id="street_address_1_<%= market.id %>"></p>
+      <p id="street_address_2_<%= market.id %>"></p>
+      <p id="city_state_zip_<%= market.id %>"></p>
+    <h3 id="market_hours_<%= market.id %>"></h3>
   </div>
 <% end %>
