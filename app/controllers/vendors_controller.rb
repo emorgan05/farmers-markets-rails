@@ -4,7 +4,7 @@ class VendorsController < ApplicationController
       @vendor = Vendor.find(params[:id])
     elsif params[:market_id]
       @vendor = Vendor.find(params[:id])
-      render 'details'
+      render json: @vendor
     elsif current_vendor && current_vendor.id.to_s != params[:id]
       flash[:notice] = "Please access your profile through the link above"
       redirect_to root_path
