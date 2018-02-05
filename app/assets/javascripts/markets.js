@@ -11,7 +11,7 @@ $(document).ready(function() {
       $("#city_state_zip_" + id).text(cityStateZip);
       $("#market_hours_" + id).text(data["operating_hours"]);
 
-      // vendors
+      // list vendors with ability to click for more info
       var vendorText = "<h3>Vendors</h3><ul>";
       for(var vendor of data["vendors"]) {
         var name = vendor["shop_name"];

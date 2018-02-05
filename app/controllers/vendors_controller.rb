@@ -1,8 +1,8 @@
 class VendorsController < ApplicationController
   def show
-    if current_vendor && current_vendor.id.to_s == params[:id]
-      @vendor = Vendor.find(params[:id])
-    elsif params[:market_id]
+    # if current_vendor && current_vendor.id.to_s == params[:id]
+    #   @vendor = Vendor.find(params[:id])
+    if params[:market_id]
       @vendor = Vendor.find(params[:id])
       render json: @vendor
     elsif current_vendor && current_vendor.id.to_s != params[:id]
