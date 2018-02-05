@@ -16,3 +16,4 @@
 //= require_tree .
 //= markets
 //= vendors
+//= items
