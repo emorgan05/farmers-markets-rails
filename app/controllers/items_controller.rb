@@ -30,9 +30,9 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to vendor_items_path(current_vendor.id)
+      render json: @item
     else
-      render 'new'
+      render 'items/new', layout: false
     end
   end
 

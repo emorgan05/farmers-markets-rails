@@ -37,16 +37,28 @@ $(document).on("click", ".js-add", function(event) {
   });
 });
 
-$(document).on("click", ".item_form", function() {
-  $(".item_form").on("submit", function(event) {
-    event.preventDefault();
-    $.ajax({
-      method: "PATCH",
-      url: this.action,
-      data: $(this).serialize(),
-      success: function(response) {
-        console.log(response);
-      }
-    });
+// create item
+$(document).on("submit", ".add_item", function(event) {
+  event.preventDefault();
+  var vendor_id = $(this).data("vendor");
+  var values = $(this).serialize();
+  var posting = $.post("/vendors/" + vendor_id + "/items", values);
+  posting.done(function(response) {
+    debugger;
+    console.log(response);
   });
 });
+
+// $(document).on("click", ".item_form", function() {
+//   $(".item_form").on("submit", function(event) {
+//     event.preventDefault();
+//     $.ajax({
+//       method: "PATCH",
+//       url: this.action,
+//       data: $(this).serialize(),
+//       success: function(response) {
+//         console.log(response);
+//       }
+//     });
+//   });
+// });
