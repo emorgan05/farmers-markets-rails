@@ -28,6 +28,13 @@ $(document).ready(function() {
       method: "PATCH",
       url: this.action,
       data: $(this).serialize(),
+      success: function(response) {
+        $("#js-shopName").text(response["shop_name"]);
+        $("#js-vendorName").text(response["shop_name"]);
+        $("#js-description").text(response["description"]);
+        $("#js-contact").text(response["contact"]);
+        console.log(response);
+      }
     });
   });
 });

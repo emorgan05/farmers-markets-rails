@@ -1,4 +1,4 @@
-<h1><%= @vendor.shop_name %></h1>
+<h1 id="js-shopName"><%= @vendor.shop_name %></h1>
 
 <h3>Your Markets:</h3>
 <% @vendor.markets.each do |market| %>
@@ -15,10 +15,10 @@
 <div id="js-inventoryTable"></div>
 <br>
 <p>------------------------</p>
-<h3>Vendor Information</h3>
-<p><%= @vendor.shop_name %></p>
-<p><%= @vendor.description %></p>
-<p><%= @vendor.contact %></p>
+<h3>Public Information</h3>
+<p id="js-vendorName"><%= @vendor.shop_name %></p>
+<p id="js-description"><%= @vendor.description %></p>
+<p id="js-contact"><%= @vendor.contact %></p>
 
 <!-- <button class="js-vendorEdit" data-id="<%#= @vendor.id %>">Update Your Information (so others can find you)</button> -->
 <p>------------------------</p>
