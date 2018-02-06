@@ -33,6 +33,7 @@ $(document).on("submit", "form", function(event) {
       $("#js-vendorName").text(response["shop_name"]);
       $("#js-description").text(response["description"]);
       $("#js-contact").text(response["contact"]);
+      $("#editVendor").html("");
     }
   });
 });
