@@ -31,7 +31,11 @@ class VendorsController < ApplicationController
   def update
     @vendor = Vendor.find(params[:id])
     if @vendor.update(vendor_params)
-      redirect_to vendor_path(@vendor)
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render json: @vendor }
+      end
+      # redirect_to vendor_path(@vendor)
     else
       flash[:errors] = @vendor.errors.full_messages
       redirect_to edit_vendor_path(@vendor)

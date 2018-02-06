@@ -16,8 +16,14 @@
 <br>
 <p>------------------------</p>
 <h3>Vendor Information</h3>
+<p><%= @vendor.shop_name %></p>
+<p><%= @vendor.description %></p>
+<p><%= @vendor.contact %></p>
+
 <!-- <button class="js-vendorEdit" data-id="<%#= @vendor.id %>">Update Your Information (so others can find you)</button> -->
+<p>------------------------</p>
 <div id="editVendor">
+  <h3>Edit Your Public Information</h3>
   <%= render 'layouts/errors' %>
 
   <%= form_for @vendor do |f| %>
