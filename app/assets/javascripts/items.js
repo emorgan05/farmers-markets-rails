@@ -26,3 +26,18 @@ $(document).ready(function() {
     });
   });
 });
+
+$(document).on("click", ".item_form", function() {
+  $(".item_form").on("submit", function(event) {
+    event.preventDefault();
+    $.ajax({
+      method: "PATCH",
+      url: this.action,
+      data: $(this).serialize(),
+      success: function(response) {
+        render vendor_items_path(current_vendor.id);
+        console.log(response);
+      }
+    });
+  });
+});
