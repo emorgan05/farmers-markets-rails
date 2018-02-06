@@ -35,7 +35,7 @@ $(document).on("click", ".item_form", function() {
       url: this.action,
       data: $(this).serialize(),
       success: function(response) {
-        render vendor_items_path(current_vendor.id);
+        // render vendor_items_path(current_vendor.id);
         console.log(response);
       }
     });

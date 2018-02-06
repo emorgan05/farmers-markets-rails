@@ -22,6 +22,7 @@ class VendorsController < ApplicationController
 
   def edit
     @vendor = Vendor.find(params[:id])
+    render "vendors/edit", layout: false
     # render json: @vendor
     # respond_to do |format|
     #   format.js { render 'vendors/edit' }

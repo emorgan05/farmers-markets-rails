@@ -10,16 +10,15 @@ $(document).on("click", ".js-vendorDetails", function(event) {
 });
 
 // current vendor profile page
-// attempt to add edit form dynamically to the page -- currently not functioning
 $(document).ready(function() {
-  // $(".js-vendorEdit").on("click", function(event) {
-  //   event.preventDefault();
-  //   var id = $(this).data("id");
-  //   console.log($(".js-vendorEdit").html)
-  //   $.get("/vendors/" + id + "/edit", function(data) {
-  //     $("#editVendor").html("render partial: 'vendors/edit'");
-  //   });
-  // });
+  // add edit form dynamically to the page
+  $(".js-vendorEdit").on("click", function(event) {
+    event.preventDefault();
+    var id = $(this).data("id");
+    $.get("/vendors/" + id + "/edit", function(response) {
+      $("#editVendor").html(response);
+    });
+  });
 
   // submitting vendor edit form with ajax
   $("form").submit(function(event) {

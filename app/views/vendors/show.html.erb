@@ -20,33 +20,7 @@
 <p id="js-description"><%= @vendor.description %></p>
 <p id="js-contact"><%= @vendor.contact %></p>
 
-<!-- <button class="js-vendorEdit" data-id="<%#= @vendor.id %>">Update Your Information (so others can find you)</button> -->
+
 <p>------------------------</p>
-<div id="editVendor">
-  <h3>Edit Your Public Information</h3>
-  <%= render 'layouts/errors' %>
-
-  <%= form_for @vendor do |f| %>
-    <%= f.label :shop_name %>
-    <%= f.text_field :shop_name %>
-    <br>
-
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-    <br>
-
-    <%= f.label "Phone Number" %>
-    <%= f.text_field :contact %>
-    <br>
-
-    <%= f.label "Markets Where You Sell" %>
-    <%= f.collection_select :market_ids, Market.all, :id, :name %>
-    <br>
-
-    <%= f.label "Are you an administrator?" %>
-    <%= f.check_box :role %>
-    <br>
-
-    <%= f.submit "Update Vendor", :class => "js-vendorEdit" %>
-  <% end %>
-</div>
+<button class="js-vendorEdit" data-id="<%= @vendor.id %>">Edit Your Public Information</button>
+<div id="editVendor"></div>
