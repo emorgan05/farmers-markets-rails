@@ -40,6 +40,7 @@ class ItemsController < ApplicationController
     if params[:vendor_id] && current_vendor && current_vendor.id.to_s == params[:vendor_id]
       @item = Item.find(params[:id])
       @vendor = current_vendor
+      render 'items/edit', layout: false
     else
       redirect_to new_vendor_session_path
     end

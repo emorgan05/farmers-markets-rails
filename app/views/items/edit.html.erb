@@ -1,3 +1,24 @@
 <h1>Edit <%= @item.name %></h1>
 
-<%= render "form" %>
+<%= render 'layouts/errors' %>
+
+<%= form_for [@vendor, @item], :html => { :class => "edit_item" }, :data => { :vendor => "#{@vendor.id}" } do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+
+  Price (enter as 200 for $2.00) <%= f.text_field :price %>
+  <br>
+
+  <%= f.label :inventory %>
+  <%= f.text_field :inventory %>
+  <br>
+
+  <%= f.collection_select :category_id, Category.all, :id, :title %>
+  <br>
+
+  <%= f.hidden_field :vendor_id, value: @vendor.id %>
+
+  <%= f.submit %>
+<% end %>

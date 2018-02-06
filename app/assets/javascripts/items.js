@@ -16,7 +16,7 @@ $(document).ready(function() {
           <td>${category}</td>
           <td>${price}</td>
           <td>${inventory}</td>
-          <td><a href="/vendors/${vendor_id}/items/${item["id"]}/edit">Edit Item</a></td>
+          <td><a href="/vendors/${vendor_id}/items/${item["id"]}/edit" id="js-edit" data-id="${item["id"]}" data-vendor="${vendor_id}">Edit Item</a></td>
           <td><a href="/vendors/${vendor_id}/items/${item["id"]}" data-method="delete">Delete Item</a>
           </td>
         </tr>`
@@ -45,12 +45,40 @@ $(document).on("submit", ".add_item", function(event) {
   var posting = $.post("/vendors/" + vendor_id + "/items", values);
   posting.done(function(response) {
     console.log(response);
+    var name = response["name"];
+    var category = response["category"]["title"];
+    var price = parseInt(response["price"])/100;
+    var inventory = response["inventory"];
+
+    var inventoryRow = `<tr>
+      <td>${name}</td>
+      <td>${category}</td>
+      <td>${price}</td>
+      <td>${inventory}</td>
+      <td><a href="/vendors/${vendor_id}/items/${response["id"]}/edit">Edit Item</a></td>
+      <td><a href="/vendors/${vendor_id}/items/${response["id"]}" data-method="delete">Delete Item</a>
+      </td>
+    </tr>`
+
+    $("#js-inventoryTable tr:last").after(inventoryRow);
+    $("#js-addForm").html("");
   });
 });
 
-// $(document).on("click", ".item_form", function() {
-//   $(".item_form").on("submit", function(event) {
+// show edit item form
+$(document).on("click", "#js-edit", function(event) {
+  event.preventDefault();
+  var vendor_id = $(this).data("vendor");
+  var id = $(this).data("id");
+  $.get("/vendors/" + vendor_id + "/items/" + id + "/edit", function(response) {
+    $("#js-addForm").html(response);
+  });
+});
+
+// update item
+// $(document).on("click", ".edit_item", function(event) {
 //     event.preventDefault();
+//     var vendor_id = $(this).data("vendor");
 //     $.ajax({
 //       method: "PATCH",
 //       url: this.action,
