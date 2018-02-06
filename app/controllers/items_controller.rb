@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to vendor_items_path(current_vendor.id)
+      redirect_to vendor_path(current_vendor.id)
     else
       flash[:errors] = @item.errors.full_messages
       redirect_to edit_vendor_item_path(current_vendor.id, @item)
@@ -57,7 +57,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to vendor_items_path(current_vendor.id)
+    redirect_to vendor_path(current_vendor.id)
   end
 
   private
