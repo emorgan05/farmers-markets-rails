@@ -19,21 +19,20 @@ $(document).ready(function() {
       $("#editVendor").html(response);
     });
   });
+});
 
-  // submitting vendor edit form with ajax
-  $("form").submit(function(event) {
-    event.preventDefault();
-    $.ajax({
-      method: "PATCH",
-      url: this.action,
-      data: $(this).serialize(),
-      success: function(response) {
-        $("#js-shopName").text(response["shop_name"]);
-        $("#js-vendorName").text(response["shop_name"]);
-        $("#js-description").text(response["description"]);
-        $("#js-contact").text(response["contact"]);
-        console.log(response);
-      }
-    });
+// submitting vendor edit form with ajax -- bound to document, because it is available at document.ready
+$(document).on("submit", "form", function(event) {
+  event.preventDefault();
+  $.ajax({
+    method: "PATCH",
+    url: this.action,
+    data: $(this).serialize(),
+    success: function(response) {
+      $("#js-shopName").text(response["shop_name"]);
+      $("#js-vendorName").text(response["shop_name"]);
+      $("#js-description").text(response["description"]);
+      $("#js-contact").text(response["contact"]);
+    }
   });
 });
