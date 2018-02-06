@@ -44,7 +44,6 @@ $(document).on("submit", ".add_item", function(event) {
   var values = $(this).serialize();
   var posting = $.post("/vendors/" + vendor_id + "/items", values);
   posting.done(function(response) {
-    debugger;
     console.log(response);
   });
 });

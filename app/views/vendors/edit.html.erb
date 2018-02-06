@@ -1,7 +1,7 @@
 <h3>Edit Your Public Information</h3>
 <%= render 'layouts/errors' %>
 
-<%= form_for @vendor do |f| %>
+<%= form_for (@vendor), :html => { :class => "update_vendor" } do |f| %>
   <%= f.label :shop_name %>
   <%= f.text_field :shop_name %>
   <br>

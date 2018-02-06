@@ -22,7 +22,7 @@ $(document).ready(function() {
 });
 
 // submitting vendor edit form with ajax -- bound to document, because it is available at document.ready
-$(document).on("submit", "form", function(event) {
+$(document).on("submit", ".update_vendor", function(event) {
   event.preventDefault();
   $.ajax({
     method: "PATCH",
