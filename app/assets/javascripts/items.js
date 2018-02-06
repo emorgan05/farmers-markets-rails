@@ -23,7 +23,17 @@ $(document).ready(function() {
       }
       inventoryTable += "</table>"
       $("#js-inventoryTable").html(inventoryTable);
+      $("#js-buttons").html(`<button class="js-add" data-vendor=${vendor_id}>Add Item</button>`);
     });
+  });
+});
+
+// show add item form
+$(document).on("click", ".js-add", function(event) {
+  event.preventDefault();
+  var vendor_id = $(this).data("vendor");
+  $.get("/vendors/" + vendor_id + "/items/new", function(response) {
+    $("#js-addForm").html(response);
   });
 });
 
@@ -35,7 +45,6 @@ $(document).on("click", ".item_form", function() {
       url: this.action,
       data: $(this).serialize(),
       success: function(response) {
-        // render vendor_items_path(current_vendor.id);
         console.log(response);
       }
     });
