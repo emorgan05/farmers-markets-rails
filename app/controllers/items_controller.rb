@@ -2,19 +2,6 @@ class ItemsController < ApplicationController
   def index
     @items = current_vendor.items
     render json: @items
-
-    # @categories = Category.all
-    # @vendor = Vendor.find(params[:vendor_id])
-    #
-    # if params[:vendor_id] && current_vendor && current_vendor.id.to_s == params[:vendor_id]
-    #   if !params[:category].blank?
-    #     @items = current_vendor.items.by_category(params[:category])
-    #   else
-    #     @items = current_vendor.items
-    #   end
-    # else
-    #   redirect_to new_vendor_session_path
-    # end
   end
 
   def new
@@ -50,7 +37,6 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.update(item_params)
       render json: @item
-      # redirect_to vendor_path(current_vendor.id)
     else
       flash[:errors] = @item.errors.full_messages
       redirect_to edit_vendor_item_path(current_vendor.id, @item)
@@ -61,12 +47,6 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
     redirect_to vendor_path(current_vendor.id)
-    # respond_to do |format|
-    #   format.json { head :no_content }
-    # end
-    #   @items = current_vendor.items
-    #   render json: @items
-    # end
   end
 
   private
