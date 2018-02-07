@@ -4,39 +4,43 @@ $(document).ready(function() {
     event.preventDefault();
     var id = $(this).data("id");
     $.get("/markets/" + id, function(data) {
-      // let market = 
-      $("#market_name_" + id).text(data["name"]);
-      $("#street_address_1_" + id).text(data["addresses"][0]["street_address_1"]);
-      $("#street_address_2_" + id).text(data["addresses"][0]["street_address_2"]);
-      var cityStateZip = data["addresses"][0]["city"] + ", " + data["addresses"][0]["state"] + " " + data["addresses"][0]["zip"]
-      $("#city_state_zip_" + id).text(cityStateZip);
-      $("#market_hours_" + id).text(data["operating_hours"]);
+      let market = new Market(data["id"], data["name"], data["addresses"][0]["street_address_1"], data["addresses"][0]["street_address_2"], data["addresses"][0]["city"], data["addresses"][0]["state"], data["addresses"][0]["zip"], data["operating_hours"], data["vendors"]);
 
-      // list vendors with ability to click for more info
-      var vendorText = "<h3>Vendors</h3><ul>";
-      for(var vendor of data["vendors"]) {
-        var name = vendor["shop_name"];
-        vendorText += `<li><button class='js-vendorDetails' data-market='${id}' data-id='${vendor["id"]}'>${name}</button><div id='vendor_details_${vendor["id"]}'></div></li>`;
-      }
-      vendorText += "</ul>"
-      $("#market_vendors_" + id).html(vendorText);
+      market.render();
     });
   });
 });
 
 
-// class Market
-//
-//
-// class User {
-//   constructor(id, username, firstname, lastname) {
-//     this.id = id,
-//     this.username = username,
-//     this.firstname = firstname,
-//     this.lastname = lastname
-//   }
-// }
-//
-// render() {
-//   $("#market_name_" + this.id).text(this.name);
-// }
+class Market {
+  constructor(id, name, street_address_1, street_address_2, city, state, zip, operating_hours, vendors) {
+    this.id = id;
+    this.name = name;
+    this.street_address_1 = street_address_1;
+    this.street_address_2 = street_address_2;
+    this.city = city;
+    this.state = state;
+    this.zip = zip;
+    this.operating_hours = operating_hours;
+    this.vendors = vendors
+  }
+
+  render() {
+    // populate market information
+    $("#market_name_" + this.id).text(this.name);
+    $("#street_address_1_" + this.id).text(this.street_address_1);
+    $("#street_address_2_" + this.id).text(this.street_address_2);
+    var cityStateZip = this.city + ", " + this.state + " " + this.zip;
+    $("#city_state_zip_" + this.id).text(cityStateZip);
+    $("#market_hours_" + this.id).text(this.operating_hours);
+
+    // list vendors with ability to click for more info
+    var vendorText = "<h3>Vendors</h3><ul>";
+    for(var vendor of this.vendors) {
+      var name = vendor["shop_name"];
+      vendorText += `<li><button class='js-vendorDetails' data-market='${this.id}' data-id='${vendor["id"]}'>${name}</button><div id='vendor_details_${vendor["id"]}'></div></li>`;
+    }
+    vendorText += "</ul>"
+    $("#market_vendors_" + this.id).html(vendorText);
+  }
+}
