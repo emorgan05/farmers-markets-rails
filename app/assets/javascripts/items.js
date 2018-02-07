@@ -4,23 +4,27 @@ $(document).ready(function() {
     event.preventDefault();
     var vendor_id = $(this).data("vendor");
     $.get("/vendors/" + vendor_id + "/items", function(data) {
-      var inventoryTable = "<h3>Inventory</h3><table><tr><th>Item Name</th><th>Category</th><th>Price</th><th>Inventory</th><th>Edit</th><th>Delete</th></tr>"
-      for(var item of data) {
-        var name = item["name"];
-        var category = item["category"]["title"];
-        var price = parseInt(item["price"])/100;
-        var inventory = item["inventory"];
+      var inventoryTable = "<h3>Inventory</h3><table><tr><th>Item Name</th><th>Category</th><th>Price</th><th>Inventory</th><th>Edit</th><th>Delete</th></tr>";
 
-        inventoryTable += `<tr id="tr-${item["id"]}">
+      for(var item of data) {
+        var id = item["id"]
+        var name = item["name"]
+        var category = item["category"]["title"]
+        var price = parseInt(item["price"])/100
+        var inventory = item["inventory"]
+        var vendorId = item["vendor"]["id"];
+
+        inventoryTable += `<tr id="tr-${id}">
           <td>${name}</td>
           <td>${category}</td>
           <td>${price}</td>
           <td>${inventory}</td>
-          <td><a href="/vendors/${vendor_id}/items/${item["id"]}/edit" id="js-edit" data-id="${item["id"]}" data-vendor="${vendor_id}">Edit Item</a></td>
-          <td><a href="/vendors/${vendor_id}/items/${item["id"]}" data-method="delete">Delete Item</a>
+          <td><a href="/vendors/${vendorId}/items/${id}/edit" id="js-edit" data-id="${id}" data-vendor="${vendorId}">Edit Item</a></td>
+          <td><a href="/vendors/${vendorId}/items/${id}" data-method="delete">Delete Item</a>
           </td>
-        </tr>`
+        </tr>`;
       }
+
       inventoryTable += "</table>"
       $("#js-inventoryTable").html(inventoryTable);
       $("#js-buttons").html(`<button class="js-add" data-vendor=${vendor_id}>Add Item</button>`);
@@ -44,19 +48,20 @@ $(document).on("submit", ".add_item", function(event) {
   var values = $(this).serialize();
   var posting = $.post("/vendors/" + vendor_id + "/items", values);
   posting.done(function(response) {
-    console.log(response);
+    var id = response["id"];
     var name = response["name"];
     var category = response["category"]["title"];
     var price = parseInt(response["price"])/100;
-    var inventory = response["inventory"];
+    var inventory = response["inventory"]
+    var vendorId = response["vendor"]["id"];
 
-    var inventoryRow = `<tr id="tr-${response["id"]}">
+    var inventoryRow = `<tr id="tr-${id}">
       <td>${name}</td>
       <td>${category}</td>
       <td>${price}</td>
       <td>${inventory}</td>
-      <td><a href="/vendors/${vendor_id}/items/${response["id"]}/edit" id="js-edit" data-id="${response["id"]}" data-vendor="${vendor_id}">Edit Item</a></td>
-      <td><a href="/vendors/${vendor_id}/items/${response["id"]}" data-method="delete">Delete Item</a>
+      <td><a href="/vendors/${vendorId}/items/${id}/edit" id="js-edit" data-id="${id}" data-vendor="${vendorId}">Edit Item</a></td>
+      <td><a href="/vendors/${vendorId}/items/${id}" data-method="delete">Delete Item</a>
       </td>
     </tr>`
 
