@@ -11,7 +11,7 @@ $(document).ready(function() {
         var price = parseInt(item["price"])/100;
         var inventory = item["inventory"];
 
-        inventoryTable += `<tr>
+        inventoryTable += `<tr id="tr-${item["id"]}">
           <td>${name}</td>
           <td>${category}</td>
           <td>${price}</td>
@@ -76,16 +76,31 @@ $(document).on("click", "#js-edit", function(event) {
 });
 
 // update item
-// $(document).on("click", ".edit_item", function(event) {
-//     event.preventDefault();
-//     var vendor_id = $(this).data("vendor");
-//     $.ajax({
-//       method: "PATCH",
-//       url: this.action,
-//       data: $(this).serialize(),
-//       success: function(response) {
-//         console.log(response);
-//       }
-//     });
-//   });
-// });
+$(document).on("submit", ".edit_item", function(event) {
+  event.preventDefault();
+  var vendor_id = $(this).data("vendor");
+  var id = $(this).data("id");
+  $.ajax({
+    method: "PATCH",
+    url: this.action,
+    data: $(this).serialize(),
+    success: function(response) {
+      var name = response["name"];
+      var category = response["category"]["title"];
+      var price = parseInt(response["price"])/100;
+      var inventory = response["inventory"];
+      var item_id = response["id"];
+
+      var updatedRow = `<td>${name}</td>
+        <td>${category}</td>
+        <td>${price}</td>
+        <td>${inventory}</td>
+        <td><a href="/vendors/${vendor_id}/items/${response["id"]}/edit">Edit Item</a></td>
+        <td><a href="/vendors/${vendor_id}/items/${response["id"]}" data-method="delete">Delete Item</a>
+        </td>`
+
+      $("#tr-" + item_id).html(updatedRow);
+      $("#js-addForm").html("");
+    }
+  });
+});
