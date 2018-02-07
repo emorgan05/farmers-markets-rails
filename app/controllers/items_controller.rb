@@ -61,6 +61,12 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
     redirect_to vendor_path(current_vendor.id)
+    # respond_to do |format|
+    #   format.json { head :no_content }
+    # end
+    #   @items = current_vendor.items
+    #   render json: @items
+    # end
   end
 
   private

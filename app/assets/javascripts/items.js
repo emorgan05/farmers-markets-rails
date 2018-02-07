@@ -17,7 +17,7 @@ $(document).ready(function() {
           <td>${price}</td>
           <td>${inventory}</td>
           <td><a href="/vendors/${vendor_id}/items/${item["id"]}/edit" id="js-edit" data-id="${item["id"]}" data-vendor="${vendor_id}">Edit Item</a></td>
-          <td><a href="/vendors/${vendor_id}/items/${item["id"]}" data-method="delete">Delete Item</a>
+          <td><a href="/vendors/${vendor_id}/items/${item["id"]}" id="js-delete" data-id="${item["id"]}" data-vendor="${vendor_id}" data-method="delete">Delete Item</a>
           </td>
         </tr>`
       }
@@ -50,12 +50,12 @@ $(document).on("submit", ".add_item", function(event) {
     var price = parseInt(response["price"])/100;
     var inventory = response["inventory"];
 
-    var inventoryRow = `<tr>
+    var inventoryRow = `<tr id="tr-${response["id"]}">
       <td>${name}</td>
       <td>${category}</td>
       <td>${price}</td>
       <td>${inventory}</td>
-      <td><a href="/vendors/${vendor_id}/items/${response["id"]}/edit">Edit Item</a></td>
+      <td><a href="/vendors/${vendor_id}/items/${response["id"]}/edit" id="js-edit" data-id="${response["id"]}" data-vendor="${vendor_id}">Edit Item</a></td>
       <td><a href="/vendors/${vendor_id}/items/${response["id"]}" data-method="delete">Delete Item</a>
       </td>
     </tr>`
@@ -95,8 +95,8 @@ $(document).on("submit", ".edit_item", function(event) {
         <td>${category}</td>
         <td>${price}</td>
         <td>${inventory}</td>
-        <td><a href="/vendors/${vendor_id}/items/${response["id"]}/edit">Edit Item</a></td>
-        <td><a href="/vendors/${vendor_id}/items/${response["id"]}" data-method="delete">Delete Item</a>
+        <td><a href="/vendors/${vendor_id}/items/${item_id}/edit" id="js-edit" data-id="${item_id}" data-vendor="${vendor_id}">Edit Item</a></td>
+        <td><a href="/vendors/${vendor_id}/items/${item_id}" data-method="delete">Delete Item</a>
         </td>`
 
       $("#tr-" + item_id).html(updatedRow);
@@ -104,3 +104,28 @@ $(document).on("submit", ".edit_item", function(event) {
     }
   });
 });
+
+// delete item
+// $(document).on("click", "#js-delete", function(event) {
+//   event.preventDefault();
+//   var vendor_id = $(this).data("vendor");
+//   var id = $(this).data("id");
+//   var $target = $(this).parents("#tr-" + id);
+//   debugger
+//   $.ajax({
+//     method: "DELETE",
+//     url: this.href,
+//     beforeSend: function() {
+//       $target.hide();
+//     },
+//     error: function () {
+//       $target.show();
+//       console.log("Sorry! Couldn't remove item.");
+//     }
+//   });
+// });
+
+// $(document).on('ajax:success', '#js-delete', function(){
+//   var id = $(this).data("id");
+//   $(this).parent('#tr-' + id).remove();
+// });
