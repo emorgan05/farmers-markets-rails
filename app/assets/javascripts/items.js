@@ -4,29 +4,10 @@ $(document).ready(function() {
     event.preventDefault();
     var vendor_id = $(this).data("vendor");
     $.get("/vendors/" + vendor_id + "/items", function(data) {
-      var inventoryTable = "<h3>Inventory</h3><table><tr><th>Item Name</th><th>Category</th><th>Price</th><th>Inventory</th><th>Edit</th><th>Delete</th></tr>";
-
-      for(var item of data) {
-        var id = item["id"]
-        var name = item["name"]
-        var category = item["category"]["title"]
-        var price = parseInt(item["price"])/100
-        var inventory = item["inventory"]
-        var vendorId = item["vendor"]["id"];
-
-        inventoryTable += `<tr id="tr-${id}">
-          <td>${name}</td>
-          <td>${category}</td>
-          <td>${price}</td>
-          <td>${inventory}</td>
-          <td><a href="/vendors/${vendorId}/items/${id}/edit" id="js-edit" data-id="${id}" data-vendor="${vendorId}">Edit Item</a></td>
-          <td><a href="/vendors/${vendorId}/items/${id}" data-method="delete">Delete Item</a>
-          </td>
-        </tr>`;
-      }
-
-      inventoryTable += "</table>"
-      $("#js-inventoryTable").html(inventoryTable);
+      itemsTableHtml = HandlebarsTemplates['items_table']({
+        items: data
+      });
+      $('#js-inventoryTable').html(itemsTableHtml);
       $("#js-buttons").html(`<button class="js-add" data-vendor=${vendor_id}>Add Item</button>`);
     });
   });
