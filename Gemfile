@@ -38,6 +38,8 @@ gem 'dotenv-rails'
 gem 'active_model_serializers', '0.10.6'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+# use handlebars
+gem 'handlebars_assets'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
