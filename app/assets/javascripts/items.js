@@ -29,24 +29,10 @@ $(document).on("submit", ".add_item", function(event) {
   var values = $(this).serialize();
   var posting = $.post("/vendors/" + vendor_id + "/items", values);
   posting.done(function(response) {
-    var id = response["id"];
-    var name = response["name"];
-    var category = response["category"]["title"];
-    var price = parseInt(response["price"])/100;
-    var inventory = response["inventory"]
-    var vendorId = response["vendor"]["id"];
-
-    var inventoryRow = `<tr id="tr-${id}">
-      <td>${name}</td>
-      <td>${category}</td>
-      <td>${price}</td>
-      <td>${inventory}</td>
-      <td><a href="/vendors/${vendorId}/items/${id}/edit" id="js-edit" data-id="${id}" data-vendor="${vendorId}">Edit Item</a></td>
-      <td><a href="/vendors/${vendorId}/items/${id}" data-method="delete">Delete Item</a>
-      </td>
-    </tr>`
-
-    $("#js-inventoryTable tr:last").after(inventoryRow);
+    itemRowHtml = HandlebarsTemplates['item_row']({
+      item: response
+    });
+    $("#js-inventoryTable tr:last").after(itemRowHtml);
     $("#js-addForm").html("");
   });
 });

@@ -1,0 +1,11 @@
+{{#item}}
+  <tr id="tr-{{id}}">
+    <td>{{name}}</td>
+    <td>{{category.title}}</td>
+    <td>{{price}}</td>
+    <td>{{inventory}}</td>
+    <td><a href="/vendors/{{vendor.id}}/items/{{id}}/edit" id="js-edit" data-id="{{id}}" data-vendor="{{vendor.id}}">Edit Item</a></td>
+    <td><a href="/vendors/{{vendor.id}}/items/{{id}}" data-method="delete">Delete Item</a>
+    </td>
+  </tr>
+{{/item}}
