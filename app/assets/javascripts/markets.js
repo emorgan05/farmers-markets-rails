@@ -4,6 +4,7 @@ $(document).ready(function() {
     event.preventDefault();
     var id = $(this).data("id");
     $.get("/markets/" + id, function(data) {
+      // let market = 
       $("#market_name_" + id).text(data["name"]);
       $("#street_address_1_" + id).text(data["addresses"][0]["street_address_1"]);
       $("#street_address_2_" + id).text(data["addresses"][0]["street_address_2"]);
@@ -22,3 +23,20 @@ $(document).ready(function() {
     });
   });
 });
+
+
+// class Market
+//
+//
+// class User {
+//   constructor(id, username, firstname, lastname) {
+//     this.id = id,
+//     this.username = username,
+//     this.firstname = firstname,
+//     this.lastname = lastname
+//   }
+// }
+//
+// render() {
+//   $("#market_name_" + this.id).text(this.name);
+// }
