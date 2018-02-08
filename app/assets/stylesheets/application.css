@@ -92,6 +92,14 @@ a {
   padding: 5px;
 }
 
+/* Buttons */
+button {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #BCE677;
+}
+
 /* Table */
 table, th, td {
   border: 1px solid #A2CC5D;
