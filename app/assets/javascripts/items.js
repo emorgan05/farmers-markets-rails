@@ -57,21 +57,11 @@ $(document).on("submit", ".edit_item", function(event) {
     url: this.action,
     data: $(this).serialize(),
     success: function(response) {
-      var name = response["name"];
-      var category = response["category"]["title"];
-      var price = parseInt(response["price"])/100;
-      var inventory = response["inventory"];
       var item_id = response["id"];
-
-      var updatedRow = `<td>${name}</td>
-        <td>${category}</td>
-        <td>${price}</td>
-        <td>${inventory}</td>
-        <td><a href="/vendors/${vendor_id}/items/${item_id}/edit" id="js-edit" data-id="${item_id}" data-vendor="${vendor_id}">Edit Item</a></td>
-        <td><a href="/vendors/${vendor_id}/items/${item_id}" data-method="delete">Delete Item</a>
-        </td>`
-
-      $("#tr-" + item_id).html(updatedRow);
+      updatedItemHtml = HandlebarsTemplates['item_update']({
+        item: response
+      });
+      $("#tr-" + item_id).html(updatedItemHtml);
       $("#js-addForm").html("");
     }
   });
