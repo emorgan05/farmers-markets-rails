@@ -2,9 +2,9 @@
 // on welcome#home page
 $(document).on("click", ".js-vendorDetails", function(event) {
   event.preventDefault();
-  var id = $(this).data("id");
-  var market_id = $(this).data("market");
-  $.get("/markets/" + market_id + "/vendors/" + id + ".json", function(data) {
+  const id = $(this).data("id");
+  const marketID = $(this).data("market");
+  $.get("/markets/" + marketID + "/vendors/" + id + ".json", function(data) {
     let vendor = new Vendor(data["id"], data["shop_name"], data["description"], data["contact"]);
     vendor.renderDetails();
   });
@@ -15,7 +15,7 @@ $(document).on("click", ".js-vendorDetails", function(event) {
 $(document).ready(function() {
   $(".js-vendorEdit").on("click", function(event) {
     event.preventDefault();
-    var id = $(this).data("id");
+    const id = $(this).data("id");
     $.get("/vendors/" + id + "/edit", function(response) {
       $("#editVendor").html(response);
     });
@@ -37,21 +37,21 @@ $(document).on("submit", ".update_vendor", function(event) {
 });
 
 class Vendor {
-  constructor(id, shop_name, description, contact) {
+  constructor(id, shopName, description, contact) {
     this.id = id;
-    this.shop_name = shop_name;
+    this.shopName = shopName;
     this.description = description;
     this.contact = contact;
   }
 
   renderDetails() {
-    var vendorDetails = `<p>${this.shop_name}</p><p>${this.description}</p><p>${this.contact}</p>`;
+    const vendorDetails = `<p>${this.shopName}</p><p>${this.description}</p><p>${this.contact}</p>`;
     $("#vendor_details_" + this.id).html(vendorDetails);
   }
 
   renderUpdates() {
-    $("#js-shopName").text(this.shop_name);
-    $("#js-vendorName").text(this.shop_name);
+    $("#js-shopName").text(this.shopName);
+    $("#js-vendorName").text(this.shopName);
     $("#js-description").text(this.description);
     $("#js-contact").text(this.contact);
     $("#editVendor").html("");
